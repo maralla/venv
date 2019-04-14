@@ -42,6 +42,7 @@ function __venv__ls
     popd
 end
 
+
 function __venv__mk
     __venv__set_home
     if not set -q argv[1]
@@ -49,7 +50,9 @@ function __venv__mk
         exit 1
     end
     set -l DEST "$VIRTUALENV_HOME/$argv[1]"
-    virtualenv $argv[2..-1] $DEST
+    set -l VENV "$VIRTUALENV"
+    test -z "$VENV"; and set -l VENV virtualenv
+    eval $VENV $argv[2..-1] $DEST
 end
 
 function __venv__rm
