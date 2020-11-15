@@ -52,7 +52,7 @@ function __venv__mk
     set -l DEST "$VIRTUALENV_HOME/$argv[1]"
     set -l VENV "$VIRTUALENV"
     test -z "$VENV"; and set -l VENV virtualenv
-    eval $VENV $argv[2..-1] $DEST
+    eval $VENV $argv[2..(math (count $argv)  + 1)] $DEST
 end
 
 function __venv__rm
